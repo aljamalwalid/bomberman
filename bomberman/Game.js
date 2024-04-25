@@ -6,7 +6,8 @@ import MapElement from "./MapElement.js";
 
 export default class Game {
     #matrix
-    #size
+    #sizeX
+    #sizeY
     #boardView
     #model
     #time
@@ -14,11 +15,12 @@ export default class Game {
     #battleRoyale
     #battleRoyaleRound
 
-    constructor(m, s) {
+    constructor(m, sizeX, sizeY) {
         this.#matrix = m;
-        this.#size = s;
+        this.#sizeX = sizeX;
+        this.#sizeY = sizeY;
         this.#boardView = new BoardView();
-        this.#model = new Model(this.#matrix, this.#size);
+        this.#model = new Model(this.#matrix, this.#sizeX, this.#sizeY); // attention to size
         this.#time = 2400;
         this.#possibleWinner = 0;
         this.#battleRoyale = [600, 500, 400, 300, 200]

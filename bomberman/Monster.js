@@ -5,7 +5,7 @@ export default class Monster extends Entity {
     constructor(p, speed = 1) {
         super(p, speed);
         this.movingDirection = Direction.randomize();
-        this.movingDirectionChange = 5 + Math.floor(Math.random() * (5+1));
+        this.movingDirectionChange = 10 + Math.floor(Math.random() * (5+1));
         
         const self = this
         setInterval(() => {

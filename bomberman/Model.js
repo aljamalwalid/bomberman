@@ -7,15 +7,17 @@ import Ghost from './Ghost.js';
 
 export default class Model {
     #matrix
-    #size
+    #sizeX
+    #sizeY
     #battleRoyale
     #monsters = []
     #player1
     #player2
 
-    constructor(matrix, size) {
+    constructor(matrix, sizeX, sizeY) {
         this.#matrix = matrix
-        this.#size = size
+        this.#sizeX = sizeX
+        this.#sizeY = sizeY
         this.#battleRoyale = 1
         this.InitEntities()
         
@@ -76,7 +78,7 @@ export default class Model {
             }
 
         } else {
-            monster.oppositeMovingDirection();
+            monster.movingDirection = Direction.randomize();
         }
     }
 
@@ -556,7 +558,7 @@ export default class Model {
     }
 
     inBound(position) {
-        if (position.x >= 0 && position.x < this.#size && position.y >= 0 && position.y < this.#size)
+        if (position.x >= 0 && position.x < this.#sizeX && position.y >= 0 && position.y < this.#sizeY)
             return true
         return false
     }
@@ -582,9 +584,9 @@ export default class Model {
     }
 
     battleRoyale() {
-        for (let i = 0; i < this.#size; i++) {
-            for (let j = 0; j < this.#size; j++) {        
-                if (i  == this.#battleRoyale || j == this.#battleRoyale || i == this.#size-1-this.#battleRoyale || j == this.#size-1-this.#battleRoyale) {
+        for (let i = 0; i < this.#sizeX; i++) {
+            for (let j = 0; j < this.#sizeY; j++) {        
+                if (i  == this.#battleRoyale || j == this.#battleRoyale || i == this.#sizeX-1-this.#battleRoyale || j == this.#sizeY-1-this.#battleRoyale) {
                     switch (this.#matrix[i][j]) {
                         case MapElement.Player1:
                             this.killEntity(this.#player1)

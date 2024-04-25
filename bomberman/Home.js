@@ -50,12 +50,9 @@ class Home {
       }
   }
 
-  newGame(matrix, size) {
-    this.#game = new Game(matrix, size);
+  newGame(matrix, sizeX, sizeY) {
+    this.#game = new Game(matrix, sizeX, sizeY);
   }
-
-  // for Deaa
-  createMap() {}
 }
 
 export default Home;

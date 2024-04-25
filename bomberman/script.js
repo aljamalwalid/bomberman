@@ -162,14 +162,14 @@ function navigateToList() {
                     const fileInput = document.getElementById("mapFileInput");
                     const jsonData = fileInput.files[0];
                     const matrix = await loadMapFromJson(jsonData);
-                    home.newGame(matrix, 13);
+                    home.newGame(matrix, 13, 13);
 
                 }
 
                 if (targetMenuId == 'gameMap' && mapIndex !== null && mapIndex !== '3') {
                     const matrix = generateMap(parseInt(mapIndex));
                     const size = 13;
-                   home.newGame(matrix, size);
+                   home.newGame(matrix, size + 2, size + 10);
                 }
                 if (targetMenuId == 'firstMenu') {
                     home.hideModule('gameMap');
